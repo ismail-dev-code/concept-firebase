@@ -1,7 +1,6 @@
 // Do not share this config on online or offline
 import { initializeApp } from "firebase/app";
-
-
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBgCKBqSuPS0eF105ICDASKONTPPNBiYEY",
@@ -9,7 +8,8 @@ const firebaseConfig = {
   projectId: "authentication-new-891f5",
   storageBucket: "authentication-new-891f5.firebasestorage.app",
   messagingSenderId: "1067397980947",
-  appId: "1:1067397980947:web:181f614ce5b655cc09f0e6"
+  appId: "1:1067397980947:web:181f614ce5b655cc09f0e6",
 };
 
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
