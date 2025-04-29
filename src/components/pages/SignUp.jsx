@@ -1,9 +1,11 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import React from "react";
+
+import React, { useContext } from "react";
 import { Link } from "react-router";
-import { auth } from "../../firebase/firebase.config";
+import { authContext } from "../mainLayout/MainLayout";
+
 
 const SignUp = () => {
+    const {handleSignUp} = useContext(authContext);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -11,14 +13,8 @@ const SignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const confirmPassword = e.target.confirmPassword.value;
-  
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+    //   console.log(fullName, email, password, confirmPassword);
+    handleSignUp(email, password);
   };
   return (
     <div className="card max-w-sm mx-auto mt-16 bg-base-100 w-full shrink-0 shadow-2xl">
