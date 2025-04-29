@@ -1,11 +1,9 @@
-
 import React, { useContext } from "react";
 import { Link } from "react-router";
 import { authContext } from "../mainLayout/MainLayout";
 
-
 const SignUp = () => {
-    const {handleSignUp} = useContext(authContext);
+  const { handleSignUp } = useContext(authContext);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -13,8 +11,28 @@ const SignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const confirmPassword = e.target.confirmPassword.value;
-    //   console.log(fullName, email, password, confirmPassword);
-    handleSignUp(email, password);
+// const validationPassword = /([a-z])([A-Z])/;
+
+    if (password.length < 6) {
+      alert("Password must be six character or greater than six character..");
+      return;
+    }
+    if (password !== confirmPassword) {
+      alert("Password and Confirm Password should be Matched.");
+      return;
+    }
+    // if(password !== validationPassword){
+    //     alert("please use strong password");
+    //     return;
+    // }
+
+    handleSignUp(email, password)
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
   return (
     <div className="card max-w-sm mx-auto mt-16 bg-base-100 w-full shrink-0 shadow-2xl">
