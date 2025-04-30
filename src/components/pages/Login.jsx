@@ -4,14 +4,20 @@ import { Link } from "react-router";
 import { authContext } from "../mainLayout/MainLayout";
 
 const Login = () => {
-  const {handleLogin} = useContext(authContext);
+  const { handleLogin} = useContext(authContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    handleLogin(email, password);
+    handleLogin(email, password)
+    // .then((result) => {
+    //   setUser(result.user).catch((error) => {
+    //     console.log(error);
+    //   });
+    // });
   };
+
   return (
     <div className="card max-w-sm mx-auto mt-16 bg-base-100 w-full shrink-0 shadow-2xl">
       <h1 className="text-2xl font-bold text-center pt-4">Log in here!</h1>

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router";
+import { authContext } from "../mainLayout/MainLayout";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  console.log(pathname);
+  const { handleSignOut } = useContext(authContext);
+ 
+
   const links = (
     <>
       <li>
@@ -57,15 +60,25 @@ const Navbar = () => {
       <div className="navbar-end">
         <button
           onClick={() => navigate("/login")}
-          className={`py-1 px-4 bg-gray-200 cursor-pointer rounded-md mr-3 ${pathname === "/login" ? "text-blue-500" : ""}`}
+          className={`py-1 px-4 bg-gray-200 cursor-pointer rounded-md mr-3 ${
+            pathname === "/login" ? "text-blue-500" : ""
+          }`}
         >
           Log In
         </button>
         <button
           onClick={() => navigate("/signup")}
-          className={`py-1 px-4 bg-gray-200 rounded-md cursor-pointer ${pathname === "/signup" ? "text-red-500 " : ""}`}
+          className={`py-1 px-4 bg-gray-200 rounded-md cursor-pointer ${
+            pathname === "/signup" ? "text-red-500 " : ""
+          }`}
         >
           Sign Up
+        </button>
+        <button
+          onClick={handleSignOut}
+          className="py-1 px-4 ml-4 bg-gray-200 rounded-md cursor-pointer"
+        >
+          Sign Out
         </button>
       </div>
     </div>
